@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+
+<body>
+		<h1>Create Your Own Flashcard Deck for Studying!</h1><br><br>
+	
+
+		<div class="box">
+
+			<div class="box-front">FRONT
+				<p id="front">
+					<!-- term lives here   -->
+				  </p>
+				
+			</div>
+		
+			<div class="box-back">BACK
+				<div id="back">
+					<!-- definition lives here   -->
+				  </div>
+  
+			</div>
+		
+		</div>
+
+		  
+	 
+		<hr><br>
+		<br>
+		<div id ="activeCardButtons">
+		  <button id="prev" onclick="prevCard()">Previous Card
+		</button>
+		<button id="flip" type="button" value="Flip" onclick="flash()">
+		Flip</button>
+		<button id="next" onclick="nextCard()">Next Card
+		</button>
+		</div>
+		<br>
+		<br>
+	 
+		<div id="formContainer">
+		  <form id="cardForm">
+			<input id="newTerm" type="text" placeholder="Add your own term or concept..." onKeyDown="if(event.keyCode==13) document.getElementById('newDef').focus()"><br>
+			<input id="newDef" type="text" placeholder="...give it a definition, then click the button to..." onKeyDown="if(event.keyCode==13) cardAdd()">
+			<br>
+			<input id="submit" type="button" value="add it to the deck!" onClick="cardAdd()">
+			<br>
+			<input id="clearDeck" type="button" value="Click HERE to clear the deck!" onClick="emptyDeck()">
+		  </form>
+		  <br>
+		</div>
+	  <select id="selectCards" style="display:none;">
+	  
+	  </select>
+		<div id="importExport">
+		  
+			<div id="import"> 
+				<h2 style="text-align:center;">Import</h2>
+				<p>choose a local file containing a <code>.json</code> array of cards, and then click below!</p>
+				<input id="uploadDeck" type="file"></input>
+			<button id="deckSubmit" onclick="upload_deck()">Choose a File and Click Here</button>
+			
+		  </div>
+		  
+		  <div id="export"> 
+			   <a class="close" id="close" onclick="slideOut()"></a>
+			  <h2 style="text-align:center;color:white;">Export</h2>
+			  <p style="color:white;">Click below to save a local <code>.json</code> file containing the current deck.</p>
+			  
+			  <button id="saveDeck" onclick="download_deck()">Save this Deck?</button>
+	  </div>
+	   
+		</div>
+	  <a class="activator" id="activator" onclick="slideIn()">Click Here to Import & Export/Save Decks of Cards</a>
+			<script type="text/javascript" src="plugins.js">
+		  </script>
+		  <script
+		  src="https://code.jquery.com/jquery-3.5.0.min.js"
+		  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+		  crossorigin="anonymous"></script>
+		   
+
+		   
+
+
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js">
+		</script>
+		<script>
+		$(document).ready(function(){
+		  
+			$( ".box-front" ).click(function() {
+         $( ".box-back" ).toggle( "slow", function() {
+
+		});
+
+    // Animation complete.
+  });
+});
+		</script>
+	  </body>
+</html>
+
